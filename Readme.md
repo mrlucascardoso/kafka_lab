@@ -20,5 +20,5 @@ Python lib is a no brainer, copy & paste and things work, the used lib was "kafk
 Java lib is to be tested, since it has an official client it has a lower priority.
 
 To test the scenario, simply run:
-docker-compose up or docker-compose up -d
--d stands for detached, if you use this you will need to get containers logs with docker logs <container-id>.
+`docker-compose up` or `docker-compose up -d`
+-d stands for detached, if you use this you will need to get containers logs with `docker logs <container-id>`.
