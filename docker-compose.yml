@@ -1,0 +1,42 @@
+---
+version: '2'
+services:
+  producer:
+    build: producer
+    environment:
+      KAFKA_TOPIC: common_topic
+
+  python-consumer:
+    build: consumers/python-consumer
+    environment:
+      KAFKA_TOPIC: common_topic
+
+  php-consumer:
+    build: consumers/php-consumer
+    environment:
+      KAFKA_TOPIC: common_topic
+
+  go-consumer:
+    build: consumers/go-consumer
+    environment:
+      KAFKA_TOPIC: common_topic
+
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
