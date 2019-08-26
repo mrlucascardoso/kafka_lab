@@ -6,8 +6,8 @@ import os
 sleep(20)
 
 # Create an instance of the Kafka consumer
-consumer = KafkaConsumer(os.environ['KAFKA_TOPIC'], bootstrap_servers='kafka:29092')
+consumer = KafkaConsumer(os.environ['KAFKA_TOPIC'], bootstrap_servers='kafka:29092', group_id='pythonConsumerGroup')
 
 # Simple print the value. Mind the msg is a tuple with more information.
 for msg in consumer:
-    print (msg.value)
+    print ('Python consumer received value using Hight level API: ' + msg.value)

@@ -15,11 +15,13 @@ services:
     build: consumers/php-consumer
     environment:
       KAFKA_TOPIC: common_topic
+      KAFKA_API_LEVEL: High
 
   go-consumer:
     build: consumers/go-consumer
     environment:
       KAFKA_TOPIC: common_topic
+      KAFKA_API_LEVEL: High
 
   zookeeper:
     image: confluentinc/cp-zookeeper:latest

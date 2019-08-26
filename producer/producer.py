@@ -3,7 +3,7 @@ from time import sleep
 import os
 import random
 
-# Wait for kafka to be ready, but get ready before others.
+# Wait for kafka to be ready, but get ready before consumers.
 sleep(15)
 
 # Create an instance of the Kafka producer
