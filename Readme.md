@@ -10,4 +10,4 @@ Java lib is to be tested, since it has an official client it has a lower priorit
 
 To test the scenario, simply run:
 docker-compose up or docker-compose up -d
--d stands for detached, if you use this you will need to get containers logs with docker logs <container-id>.
+-d stands for detached, if you use this you will need to get containers logs with docker logs 'container-id'.
